@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vmtwo"
+            type="com.module.codestyle.ui.main.fragmenttwo.TwoViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.main.fragmentone.OneFragment">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fragment Two" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcFragmentTwo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:adapterTwo="@{vmtwo.listTwo}" />
+
+    </LinearLayout>
+</layout>

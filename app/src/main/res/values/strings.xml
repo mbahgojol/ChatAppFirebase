@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">codestyle</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="club_name">
+        <item>Pesantren Tahfiz - Namlea, Pulau Buru Maluku</item>
+        <item>Marine Boat Ambulance, Pulau Airmas - Batam</item>
+        <item>Wakaf Al Quran (Bukhara A5)</item>
+        <item>Wakaf Al Quran (As-Somad</item>
+        <item>Asrama Santri Putri Ponpes Hidayatullah</item>
+    </string-array>
+    <string-array name="nazir_name">
+        <item>Sinergi Foundation</item>
+        <item>Rumah Zakat</item>
+        <item>Daarut Tauhid Peduli</item>
+        <item>Dompet Duafa</item>
+        <item>Global Wakaf</item>
+    </string-array>
+</resources>
