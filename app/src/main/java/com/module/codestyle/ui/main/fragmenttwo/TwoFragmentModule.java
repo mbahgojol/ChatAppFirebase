@@ -3,7 +3,7 @@ package com.module.codestyle.ui.main.fragmenttwo;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.v7.widget.LinearLayoutManager;
 
-import com.module.codestyle.conn.ApiService;
+import com.module.codestyle.conn.ApiManager;
 import com.module.codestyle.ui.base.ViewModelProviderFactory;
 
 import dagger.Module;
@@ -18,8 +18,8 @@ import dagger.Provides;
 @Module
 public class TwoFragmentModule {
     @Provides
-    public TwoViewModel twoViewModel(ApiService apiService) {
-        return new TwoViewModel(apiService);
+    public TwoViewModel twoViewModel(ApiManager apiManager) {
+        return new TwoViewModel(apiManager);
     }
 
     @Provides

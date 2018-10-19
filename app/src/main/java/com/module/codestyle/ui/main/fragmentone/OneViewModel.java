@@ -2,7 +2,7 @@ package com.module.codestyle.ui.main.fragmentone;
 
 import android.databinding.ObservableArrayList;
 
-import com.module.codestyle.conn.ApiService;
+import com.module.codestyle.conn.ApiManager;
 import com.module.codestyle.ui.base.BaseViewModel;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * Profesi : Android Developer
  */
 public class OneViewModel extends BaseViewModel<OneNavigator> {
-    private ApiService apiService;
+    private ApiManager apiManager;
     private ObservableArrayList<String> listOne = new ObservableArrayList();
 
     @Override
@@ -22,8 +22,8 @@ public class OneViewModel extends BaseViewModel<OneNavigator> {
 
     }
 
-    public OneViewModel(ApiService apiService) {
-        this.apiService = apiService;
+    public OneViewModel(ApiManager apiManager) {
+        this.apiManager = apiManager;
     }
 
 

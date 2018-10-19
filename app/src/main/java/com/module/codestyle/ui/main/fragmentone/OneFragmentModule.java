@@ -3,6 +3,7 @@ package com.module.codestyle.ui.main.fragmentone;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.v7.widget.LinearLayoutManager;
 
+import com.module.codestyle.conn.ApiManager;
 import com.module.codestyle.conn.ApiService;
 import com.module.codestyle.ui.base.ViewModelProviderFactory;
 
@@ -18,8 +19,8 @@ import dagger.Provides;
 @Module
 public class OneFragmentModule {
     @Provides
-    public OneViewModel oneViewModel(ApiService apiService) {
-        return new OneViewModel(apiService);
+    public OneViewModel oneViewModel(ApiManager apiManager) {
+        return new OneViewModel(apiManager);
     }
 
     @Provides

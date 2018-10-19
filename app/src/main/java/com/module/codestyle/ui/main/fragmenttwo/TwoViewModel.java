@@ -2,7 +2,7 @@ package com.module.codestyle.ui.main.fragmenttwo;
 
 import android.databinding.ObservableArrayList;
 
-import com.module.codestyle.conn.ApiService;
+import com.module.codestyle.conn.ApiManager;
 import com.module.codestyle.ui.base.BaseViewModel;
 
 import java.util.List;
@@ -15,10 +15,10 @@ import java.util.List;
  */
 public class TwoViewModel extends BaseViewModel<TwoNavigator> {
     public ObservableArrayList<String> listTwo = new ObservableArrayList();
-    public ApiService apiService;
+    public ApiManager apiManager;
 
-    public TwoViewModel(ApiService apiService) {
-        this.apiService = apiService;
+    public TwoViewModel(ApiManager apiManager) {
+        this.apiManager = apiManager;
     }
 
     @Override
