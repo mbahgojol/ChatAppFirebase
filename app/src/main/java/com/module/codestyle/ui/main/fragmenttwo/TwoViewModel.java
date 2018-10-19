@@ -3,7 +3,7 @@ package com.module.codestyle.ui.main.fragmenttwo;
 import android.databinding.ObservableArrayList;
 
 import com.module.codestyle.conn.ApiManager;
-import com.module.codestyle.ui.base.BaseViewModel;
+import com.module.codestyle.ui.base.BaseObservableViewModel;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * No Tpln : 0857-4124-4919
  * Profesi : Android Developer
  */
-public class TwoViewModel extends BaseViewModel<TwoNavigator> {
+public class TwoViewModel extends BaseObservableViewModel<TwoNavigator> {
     public ObservableArrayList<String> listTwo = new ObservableArrayList();
     public ApiManager apiManager;
 

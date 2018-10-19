@@ -27,7 +27,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * Profesi : Android Developer
  */
 
-public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity
+public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseObservableViewModel> extends AppCompatActivity
         implements BaseFragment.Callback {
 
     // TODO

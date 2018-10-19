@@ -3,7 +3,7 @@ package com.module.codestyle.ui.main.fragmentone;
 import android.databinding.ObservableArrayList;
 
 import com.module.codestyle.conn.ApiManager;
-import com.module.codestyle.ui.base.BaseViewModel;
+import com.module.codestyle.ui.base.BaseObservableViewModel;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * No Tpln : 0857-4124-4919
  * Profesi : Android Developer
  */
-public class OneViewModel extends BaseViewModel<OneNavigator> {
+public class OneViewModel extends BaseObservableViewModel<OneNavigator> {
     private ApiManager apiManager;
     private ObservableArrayList<String> listOne = new ObservableArrayList();
 
