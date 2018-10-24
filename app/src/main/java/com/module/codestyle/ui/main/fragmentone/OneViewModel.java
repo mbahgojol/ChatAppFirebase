@@ -17,7 +17,6 @@ public class OneViewModel extends BaseObservableViewModel<OneNavigator> {
     private ApiManager apiManager;
     private ObservableArrayList<String> listOne = new ObservableArrayList();
 
-    @Override
     public void init() {
 
     }

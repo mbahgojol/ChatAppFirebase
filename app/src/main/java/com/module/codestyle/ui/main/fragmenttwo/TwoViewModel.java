@@ -21,7 +21,6 @@ public class TwoViewModel extends BaseObservableViewModel<TwoNavigator> {
         this.apiManager = apiManager;
     }
 
-    @Override
     public void init() {
 
     }

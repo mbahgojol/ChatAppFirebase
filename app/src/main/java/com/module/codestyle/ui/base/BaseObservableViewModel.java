@@ -86,10 +86,7 @@ public abstract class BaseObservableViewModel<N> extends ViewModel implements Ob
 
     public void setNavigator(N navigator) {
         this.mNavigator = new WeakReference<>(navigator);
-        init();
     }
-
-    public abstract void init();
 
     /*
      * BaseObservable

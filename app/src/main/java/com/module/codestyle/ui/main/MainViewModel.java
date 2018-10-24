@@ -27,7 +27,6 @@ public class MainViewModel extends BaseObservableViewModel<MainNavigator> {
         getNavigator().gotoNextFragment();
     }
 
-    @Override
     public void init() {
 
     }
