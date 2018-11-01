@@ -16,11 +16,9 @@ import java.util.List;
  * No Tpln : 0857-4124-4919
  * Profesi : Android Developer
  */
-public abstract class BaseAdapterRecyclerview<MODEl, BINDING extends ViewDataBinding, VIEWMODEL> extends RecyclerView.Adapter<BaseAdapterRecyclerview<MODEl, BINDING, VIEWMODEL>.BaseViewHolderRecyclerView> {
+public abstract class BaseAdapterRecyclerview<BINDING extends ViewDataBinding, MODEl, VIEWMODEL> extends RecyclerView.Adapter<BaseAdapterRecyclerview<BINDING, MODEl, VIEWMODEL>.BaseViewHolderRecyclerView> {
 
     protected List<MODEl> items = new ArrayList();
-
-    protected VIEWMODEL viewmodel;
 
     protected abstract int getLayoutIdForPosition(int position);
 
@@ -60,29 +58,30 @@ public abstract class BaseAdapterRecyclerview<MODEl, BINDING extends ViewDataBin
     }
 
     @Override
-    public BaseAdapterRecyclerview<MODEl, BINDING, VIEWMODEL>.BaseViewHolderRecyclerView onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseAdapterRecyclerview<BINDING, MODEl, VIEWMODEL>.BaseViewHolderRecyclerView onCreateViewHolder(ViewGroup parent, int viewType) {
         return create(LayoutInflater.from(parent.getContext()), parent, viewType);
     }
 
     @Override
-    public void onBindViewHolder(BaseAdapterRecyclerview<MODEl, BINDING, VIEWMODEL>.BaseViewHolderRecyclerView holder, int position) {
-        holder.bindto(this.items.get(position), position);
+    public void onBindViewHolder(BaseAdapterRecyclerview<BINDING, MODEl, VIEWMODEL>.BaseViewHolderRecyclerView holder, int position) {
+        holder.bindto(items.get(position), position);
     }
 
     @Override
     public int getItemCount() {
-        return this.items.size();
+        return items.size();
     }
 
-    public BaseAdapterRecyclerview<MODEl, BINDING, VIEWMODEL>.BaseViewHolderRecyclerView create(LayoutInflater inflater, ViewGroup parent, int viewType) {
+    public BaseAdapterRecyclerview<BINDING, MODEl, VIEWMODEL>.BaseViewHolderRecyclerView create(LayoutInflater inflater, ViewGroup parent, int viewType) {
         ViewDataBinding binding = DataBindingUtil.inflate(inflater, viewType, parent, false);
-        return new BaseAdapterRecyclerview<MODEl, BINDING, VIEWMODEL>.BaseViewHolderRecyclerView(binding);
+        return new BaseAdapterRecyclerview<BINDING, MODEl, VIEWMODEL>.BaseViewHolderRecyclerView(binding);
     }
 
 
     class BaseViewHolderRecyclerView extends RecyclerView.ViewHolder {
 
         private ViewDataBinding binding;
+        protected VIEWMODEL viewmodel;
 
         public BaseViewHolderRecyclerView(ViewDataBinding binding) {
             super(binding.getRoot());
@@ -90,12 +89,10 @@ public abstract class BaseAdapterRecyclerview<MODEl, BINDING extends ViewDataBin
         }
 
         public void bindto(MODEl data, int position) {
-            viewmodel = viewmodel == null ? getViewModel(data, position) : viewmodel;
+            viewmodel = getViewModel(data, position);
             binding.setVariable(getBindingVariable(), viewmodel);
             binding.executePendingBindings();
             bind((BINDING) binding, data, position);
         }
     }
 }
-
-
