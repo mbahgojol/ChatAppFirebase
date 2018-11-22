@@ -73,6 +73,12 @@ public class ApiObserver implements Observer<String> {
             } catch (IOException i) {
                 i.printStackTrace();
             }
+        } else {
+            try {
+                onCallBack.error();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         }
     }
 

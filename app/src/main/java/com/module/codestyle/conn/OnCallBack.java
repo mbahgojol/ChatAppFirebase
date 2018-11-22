@@ -8,4 +8,8 @@ public interface OnCallBack {
     void succses(String response);
 
     void error(String errorBody, ResponseError responseError);
+
+    default void error() {
+
+    }
 }

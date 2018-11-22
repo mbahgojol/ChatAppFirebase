@@ -6,6 +6,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.module.codestyle.R;
+import com.module.codestyle.utils.RecyclerViewLoadMoreScroll;
 
 import javax.inject.Singleton;
 
@@ -42,5 +43,11 @@ public class AppModule {
     @Singleton
     Gson provideGson() {
         return new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+    }
+
+    @Provides
+    @Singleton
+    RecyclerViewLoadMoreScroll provideRecyclerViewLoadMoreScroll() {
+        return new RecyclerViewLoadMoreScroll();
     }
 }

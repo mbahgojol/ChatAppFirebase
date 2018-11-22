@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.module.codestyle.BR;
 import com.module.codestyle.R;
 import com.module.codestyle.databinding.FragmentTwoBinding;
-import com.module.codestyle.ui.base.BaseAdapterRecyclerview;
 import com.module.codestyle.ui.base.BaseFragment;
 
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ import javax.inject.Inject;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TwoFragment extends BaseFragment<FragmentTwoBinding, TwoViewModel> implements TwoNavigator, BaseAdapterRecyclerview.OnItemClickListener<String> {
+public class TwoFragment extends BaseFragment<FragmentTwoBinding, TwoViewModel> implements TwoNavigator, AdapterTwoFragment.OnItemClickListener {
 
     private FragmentTwoBinding binding;
     private TwoViewModel viewModel;

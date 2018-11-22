@@ -4,6 +4,7 @@ package com.module.codestyle.ui.main.fragmentone;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,8 +15,8 @@ import android.widget.Toast;
 import com.android.databinding.library.baseAdapters.BR;
 import com.module.codestyle.R;
 import com.module.codestyle.databinding.FragmentOneBinding;
-import com.module.codestyle.ui.base.BaseAdapterRecyclerview;
 import com.module.codestyle.ui.base.BaseFragment;
+import com.module.codestyle.utils.RecyclerViewLoadMoreScroll;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ import javax.inject.Inject;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OneFragment extends BaseFragment<FragmentOneBinding, OneViewModel> implements OneNavigator, BaseAdapterRecyclerview.OnItemClickListener<String> {
+public class OneFragment extends BaseFragment<FragmentOneBinding, OneViewModel> implements OneNavigator, AdapterOneFragment.OnItemClickListener {
 
     private FragmentOneBinding binding;
     private OneViewModel viewModel;
@@ -35,6 +36,8 @@ public class OneFragment extends BaseFragment<FragmentOneBinding, OneViewModel> 
     public AdapterOneFragment adapterOneFragment;
     @Inject
     public LinearLayoutManager linearLayoutManager;
+    @Inject
+    public RecyclerViewLoadMoreScroll recyclerViewLoadMoreScroll;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +58,21 @@ public class OneFragment extends BaseFragment<FragmentOneBinding, OneViewModel> 
         binding.rcFragmentOne.setHasFixedSize(true);
         binding.rcFragmentOne.setAdapter(adapterOneFragment);
         adapterOneFragment.setOnItemClickListener(this);
+        recyclerViewLoadMoreScroll.setLinearLayoutManager((LinearLayoutManager)binding.rcFragmentOne.getLayoutManager());
+        recyclerViewLoadMoreScroll.setOnLoadMoreListener(() -> {
+            loadmore();
+        });
+        binding.rcFragmentOne.addOnScrollListener(recyclerViewLoadMoreScroll);
         initData();
+    }
+
+    private void loadmore() {
+        adapterOneFragment.addLoadingView();
+        new Handler().postDelayed(() -> {
+            adapterOneFragment.removeLoadingView();
+            loadData();
+            recyclerViewLoadMoreScroll.setLoaded();
+        }, 2000);
     }
 
     @Override
@@ -78,6 +95,15 @@ public class OneFragment extends BaseFragment<FragmentOneBinding, OneViewModel> 
     @Override
     public void onItemClick(View view, String item) {
         Toast.makeText(getBaseActivity(), item, Toast.LENGTH_SHORT).show();
+    }
+
+    public void loadData() {
+        String[] name = getResources().getStringArray(R.array.club_name);
+        List<String> data = new ArrayList<>();
+        for (int i = 0; i < name.length; i++) {
+            data.add(name[i]);
+        }
+        adapterOneFragment.moreItems(data);
     }
 
     public void initData() {
