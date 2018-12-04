@@ -5,7 +5,7 @@
 
         <variable
             name="vmtwo"
-            type="com.module.codestyle.ui.main.fragmenttwo.TwoViewModel" />
+            type="com.bpdsulteng.mobile.ui.main.fragmenttwo.TwoViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

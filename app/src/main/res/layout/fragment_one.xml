@@ -5,7 +5,7 @@
 
         <variable
             name="vmone"
-            type="com.module.codestyle.ui.main.fragmentone.OneViewModel" />
+            type="com.bpdsulteng.mobile.ui.main.fragmentone.OneViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

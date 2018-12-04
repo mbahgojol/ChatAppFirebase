@@ -5,7 +5,7 @@
 
         <variable
             name="vmmain"
-            type="com.module.codestyle.ui.main.MainViewModel" />
+            type="com.bpdsulteng.mobile.ui.main.MainViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
