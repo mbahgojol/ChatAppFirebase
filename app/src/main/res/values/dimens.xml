@@ -1,0 +1,130 @@
+<resources>
+    <!-- standard metrics -->
+    <!--<dimen name="spacing_normal">8dp</dimen>-->
+    <!--<dimen name="spacing_micro">4dp</dimen>-->
+    <!--<dimen name="spacing_largeMX">15dp</dimen>-->
+    <!--<dimen name="spacing_huge">64dp</dimen>-->
+    <!--<dimen name="padding_normal">16dp</dimen>-->
+    <!--<dimen name="padding_large">24dp</dimen>-->
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_radius">28dp</dimen>
+    <dimen name="keyline_1">72dp</dimen>
+    <dimen name="display_4_text_size">112sp</dimen>
+    <dimen name="divider_height">1px</dimen>
+    <dimen name="dialog_corners">2dp</dimen>
+    <dimen name="padding_room_for_fab">88dp
+    </dimen> <!-- padding_normal + fab_size + padding_normal -->
+    <dimen name="fab_plus_single_padding">72dp</dimen> <!-- fab_size + padding_normal -->
+    <dimen name="half_fab_plus_single_padding">44dp
+    </dimen> <!-- (fab_sizimg2 / 2) + padding_normal -->
+    <dimen name="drag_dismiss_distance">112dp</dimen> <!-- 2 * ?android:actionBarSize -->
+    <!-- text input layout seems to add 4dp of extra padding. The following account for this -->
+    <dimen name="padding_normal_til">12dp</dimen>
+    <dimen name="til_margin_fix">-4dp</dimen>
+
+
+    <!-- dialogs -->
+    <dimen name="padding_dialog">24dp</dimen>
+    <dimen name="dialog_title_spacing">20dp</dimen>
+
+    <!-- grid -->
+    <integer name="num_columns">2</integer>
+    <dimen name="grid_icon_with_padding">40dp
+    </dimen> <!-- 24dp icoimg2 + 2 * @dimen/spacing_normal -->
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">200dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="viewpager_margin_overlap">-60dp</dimen>
+    <dimen name="viewpager_margin_overlap_payment">-30dp</dimen>
+
+    <!--padding-->
+    <dimen name="google_button_margin">12dp</dimen>
+    <dimen name="content_margin">16dp</dimen>
+    <dimen name="padding_content">40dp</dimen>
+    <dimen name="padding_giant">55dp</dimen>
+    <dimen name="padding_huge">45dp</dimen>
+    <dimen name="padding_jumbo">35dp</dimen>
+    <dimen name="padding_xlarge">24dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="padding_medium">12dp</dimen>
+    <dimen name="padding_normal">10dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_xsmall">6dp</dimen>
+    <dimen name="padding_mini">4dp</dimen>
+    <dimen name="padding_tiny">2dp</dimen>
+    <dimen name="content_margin_half">8dp</dimen>
+
+    <dimen name="spacing_xsmall">2dp</dimen>
+    <dimen name="spacing_small">3dp</dimen>
+    <dimen name="spacing_medium">5dp</dimen>
+    <dimen name="spacing_xmedium">7dp</dimen>
+    <dimen name="spacing_middle">9dp</dimen>
+    <dimen name="spacing_large">15dp</dimen>
+    <dimen name="spacing_smlarge">18dp</dimen>
+    <dimen name="spacing_mlarge">20dp</dimen>
+    <dimen name="spacing_mxlarge">25dp</dimen>
+    <dimen name="spacing_xlarge">35dp</dimen>
+    <dimen name="spacing_xmlarge">40dp</dimen>
+    <dimen name="spacing_largexx">45dp</dimen>
+    <dimen name="spacing_xxlarge">50dp</dimen>
+    <dimen name="spacing_xxxlarge">55dp</dimen>
+    <dimen name="date_width">50dp</dimen>
+
+
+    <dimen name="content_ts">19sp</dimen>
+    <dimen name="text_size1">9sp</dimen>
+    <dimen name="text_size2">11sp</dimen>
+    <dimen name="text_size3">13sp</dimen>
+    <dimen name="text_size4">15sp</dimen>
+    <dimen name="text_size5">20sp</dimen>
+    <dimen name="title1_ts">15sp</dimen>
+    <dimen name="title2_ts">17sp</dimen>
+    <dimen name="title3_ts">19sp</dimen>
+    <dimen name="title4_ts">25sp</dimen>
+
+    <dimen name="icon1_size">15dp</dimen>
+    <dimen name="icon2_size">17dp</dimen>
+    <dimen name="icon3_size">19dp</dimen>
+
+    <dimen name="dimen100">100dp</dimen>
+    <dimen name="dimen300">300dp</dimen>
+
+    <dimen name="summary_value_ts">19sp</dimen>
+    <dimen name="dashboard_block_corner">5dp</dimen>
+    <dimen name="login_btn_corner">2dp</dimen>
+    <dimen name="summary_block_height">111dp</dimen>
+    <dimen name="analyze_block_height">89dp</dimen>
+    <dimen name="button_height">40dp</dimen>
+    
+    <dimen name="menu_septum">1dp</dimen>
+    <dimen name="category_drop_down_size">35dp</dimen>
+
+    <dimen name="icon25">25dp</dimen>
+
+    <dimen name="spaceLR">40dp</dimen>
+    <dimen name="space5">5dp</dimen>
+    <dimen name="space10">10dp</dimen>
+    <dimen name="space15">15dp</dimen>
+    <dimen name="space20">20dp</dimen>
+
+    <dimen name="h1">18sp</dimen>
+    <dimen name="h2">16sp</dimen>
+    <dimen name="h3">14sp</dimen>
+    <dimen name="h4">12sp</dimen>
+    <dimen name="h5">10sp</dimen>
+    <dimen name="maxwidth">170dp</dimen>
+
+    <dimen name="nazhir_height">100dp</dimen>
+    <dimen name="project_width">120dp</dimen>
+    <dimen name="field_h">45dp</dimen>
+
+    <dimen name="login_btn_h">35dp</dimen>
+    <dimen name="signin_btn_h">32dp</dimen>
+    <dimen name="social_media_logo_h">20dp</dimen>
+
+
+</resources>
