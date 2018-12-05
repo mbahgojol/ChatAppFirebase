@@ -66,4 +66,25 @@
         <item>Dompet Duafa</item>
         <item>Global Wakaf</item>
     </string-array>
+
+    <string-array name="title_welcome">
+        <item>Ready to Travel</item>
+        <item>Pick the Ticket</item>
+        <item>Flight to Destination</item>
+        <item>Enjoy Holiday</item>
+    </string-array>
+
+    <string-array name="des_welcome">
+        <item>Choose your destination, plan Your trip. Pick the best place for Your holiday</item>
+        <item>Select the day, pick Your ticket. We give you the best prices. We guarantee!</item>
+        <item>Safe and Comfort flight is our priority. Professional crew and services.</item>
+        <item>Enjoy your holiday, Don\'t forget to feel the moment and take a photo!</item>
+    </string-array>
+
+    <integer-array name="img_welcome">
+        <item>@drawable/img_wizard_1</item>
+        <item>@drawable/img_wizard_2</item>
+        <item>@drawable/img_wizard_3</item>
+        <item>@drawable/img_wizard_4</item>
+    </integer-array>
 </resources>

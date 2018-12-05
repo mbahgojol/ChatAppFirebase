@@ -6,9 +6,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
+import com.bpdsulteng.mobile.model.WelcomePojo;
 import com.bpdsulteng.mobile.ui.main.fragmentone.AdapterOneFragment;
 import com.bpdsulteng.mobile.ui.main.fragmenttwo.AdapterTwoFragment;
+import com.bpdsulteng.mobile.ui.welcome.WelcomeViewPagerAdapter;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -51,6 +53,15 @@ public final class BindingUtils {
         if (adapterTwoFragment != null) {
             adapterTwoFragment.clearItems();
             adapterTwoFragment.addItems(strings);
+        }
+    }
+
+    @BindingAdapter({"adapter"})
+    public static void addItemsViewPagerWelcome(ViewPager viewPager, List<WelcomePojo> items) {
+        WelcomeViewPagerAdapter adapterTwoFragment = (WelcomeViewPagerAdapter) viewPager.getAdapter();
+        if (adapterTwoFragment != null) {
+            adapterTwoFragment.clearItems();
+            adapterTwoFragment.addItems(items);
         }
     }
 }

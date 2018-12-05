@@ -4,6 +4,8 @@ import com.bpdsulteng.mobile.ui.main.MainActivity;
 import com.bpdsulteng.mobile.ui.main.MainActivityModule;
 import com.bpdsulteng.mobile.ui.main.fragmentone.OneFragmentProvider;
 import com.bpdsulteng.mobile.ui.main.fragmenttwo.TwoFragmentProvider;
+import com.bpdsulteng.mobile.ui.welcome.WelcomeActivity;
+import com.bpdsulteng.mobile.ui.welcome.WelcomeActivityModule;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -20,4 +22,7 @@ public abstract class ActivityBuilder {
             OneFragmentProvider.class,
             TwoFragmentProvider.class})
     public abstract MainActivity bindMainActivity();
+
+    @ContributesAndroidInjector(modules = {WelcomeActivityModule.class})
+    public abstract WelcomeActivity bindWelcomeActivity();
 }

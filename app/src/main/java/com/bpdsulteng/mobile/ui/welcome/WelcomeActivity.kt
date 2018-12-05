@@ -1,43 +1,60 @@
 package com.bpdsulteng.mobile.ui.welcome
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.PorterDuff
 import android.os.Bundle
-import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
+import com.bpdsulteng.mobile.BR
 import com.bpdsulteng.mobile.R
+import com.bpdsulteng.mobile.databinding.ActivityWelcomeBinding
+import com.bpdsulteng.mobile.model.WelcomePojo
+import com.bpdsulteng.mobile.ui.base.BaseActivity
 import com.bpdsulteng.mobile.utils.Tools
 import com.bpdsulteng.mobile.widget.ParallaxPageTransformer
 import com.bpdsulteng.mobile.widget.ParallaxPageTransformer.ParallaxTransformInformation
 import com.bpdsulteng.mobile.widget.ParallaxPageTransformer.ParallaxTransformInformation.PARALLAX_EFFECT_DEFAULT
 import kotlinx.android.synthetic.main.activity_welcome.*
+import javax.inject.Inject
 
 
-class WelcomeActivity : AppCompatActivity() {
-
+class WelcomeActivity : BaseActivity<ActivityWelcomeBinding, WelcomeViewModel>(), WelcomeNavigator {
     private val MAX_STEP = 4
-    private val about_title_array = arrayOf("Ready to Travel", "Pick the Ticket", "Flight to Destination", "Enjoy Holiday")
-    private val about_description_array = arrayOf("Choose your destination, plan Your trip. Pick the best place for Your holiday", "Select the day, pick Your ticket. We give you the best prices. We guarantee!", "Safe and Comfort flight is our priority. Professional crew and services.", "Enjoy your holiday, Don't forget to feel the moment and take a photo!")
-    private val about_images_array = intArrayOf(R.drawable.img_wizard_1, R.drawable.img_wizard_2, R.drawable.img_wizard_3, R.drawable.img_wizard_4)
-    private var myViewPagerAdapter: MyViewPagerAdapter? = null
+    private lateinit var binding: ActivityWelcomeBinding
+    @Inject
+    internal lateinit var viewModel: WelcomeViewModel
+    @Inject
+    internal lateinit var adapter: WelcomeViewPagerAdapter
+    private var items: MutableList<WelcomePojo> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_welcome)
-
+        binding = viewDataBinding
+        viewModel.navigator = this
         bottomProgressDots(0)
+        items = initData()
+        setupView()
+    }
 
-        myViewPagerAdapter = MyViewPagerAdapter()
-        view_pager.adapter = myViewPagerAdapter
-        view_pager.addOnPageChangeListener(viewPagerPageChangeListener)
+    private fun initData(): MutableList<WelcomePojo> {
+        var title = resources.getStringArray(R.array.title_welcome)
+        var des = resources.getStringArray(R.array.des_welcome)
+        var img = resources.obtainTypedArray(R.array.img_welcome)
+        var data: MutableList<WelcomePojo> = mutableListOf()
+        title.forEachIndexed { index, s ->
+            var msg = WelcomePojo(title[index], des[index], img.getResourceId(index, -1))
+            data.add(msg)
+        }
+        return data
+    }
+
+    private fun setupView() {
+        view_pager.adapter = adapter
+        adapter.addItems(items)
+
+        view_pager.addOnPageChangeListener(viewModel.viewPagerPageChangeListener)
 
         view_pager.offscreenPageLimit = 4
         view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -45,7 +62,7 @@ class WelcomeActivity : AppCompatActivity() {
 
             @SuppressLint("SetTextI18n")
             override fun onPageSelected(position: Int) {
-                if (view_pager.currentItem == about_title_array.size - 1) {
+                if (view_pager.currentItem == items.size - 1) {
                     btn_next.text = "Get Started"
                 } else {
                     btn_next.text = "Next"
@@ -56,26 +73,27 @@ class WelcomeActivity : AppCompatActivity() {
         })
 
         val pageTransformer = ParallaxPageTransformer()
-                .addViewToParallax(ParallaxTransformInformation(R.id.image, PARALLAX_EFFECT_DEFAULT, PARALLAX_EFFECT_DEFAULT, true))
-                .addViewToParallax(ParallaxTransformInformation(R.id.title, -10f, 10f, false))
+                .addViewToParallax(ParallaxTransformInformation(R.id.image, PARALLAX_EFFECT_DEFAULT,2f , true))
+                .addViewToParallax(ParallaxTransformInformation(R.id.description, PARALLAX_EFFECT_DEFAULT,2f , false))
+                .addViewToParallax(ParallaxTransformInformation(R.id.title, -3f, 3f, false))
         view_pager.setPageTransformer(true, pageTransformer)
-
-        btn_next.setOnClickListener {
-            val current = view_pager.currentItem + 1
-            if (current < MAX_STEP) {
-                // move to next screen
-                view_pager.currentItem = current
-            } else {
-                finish()
-            }
-        }
 
         Tools.setSystemBarColor(this, R.color.grey_10)
         Tools.setSystemBarLight(this)
     }
 
+    override fun onClickedNext() {
+        val current = view_pager.currentItem + 1
+        if (current < MAX_STEP) {
+            // move to next screen
+            view_pager.currentItem = current
+        } else {
+            finish()
+        }
+    }
 
-    private fun bottomProgressDots(current_index: Int) {
+
+    override fun bottomProgressDots(current_index: Int) {
         val dots = arrayOfNulls<ImageView>(MAX_STEP)
 
         layoutDots.removeAllViews()
@@ -96,49 +114,15 @@ class WelcomeActivity : AppCompatActivity() {
         }
     }
 
-    internal var viewPagerPageChangeListener: ViewPager.OnPageChangeListener = object : ViewPager.OnPageChangeListener {
-
-        override fun onPageSelected(position: Int) {
-            bottomProgressDots(position)
-        }
-
-        override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {
-
-        }
-
-        override fun onPageScrollStateChanged(arg0: Int) {
-
-        }
+    override fun getBindingVariable(): Int {
+        return BR.vmwelcom
     }
 
+    override fun getLayoutId(): Int {
+        return R.layout.activity_welcome
+    }
 
-    inner class MyViewPagerAdapter : PagerAdapter() {
-        private var layoutInflater: LayoutInflater? = null
-
-        override fun instantiateItem(container: ViewGroup, position: Int): Any {
-            layoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-
-            val view = layoutInflater!!.inflate(R.layout.item_welcome, container, false)
-            (view.findViewById(R.id.title) as TextView).text = about_title_array[position]
-            (view.findViewById(R.id.description) as TextView).text = about_description_array[position]
-            (view.findViewById(R.id.image) as ImageView).setImageResource(about_images_array[position])
-
-            container.addView(view)
-            return view
-        }
-
-        override fun getCount(): Int {
-            return about_title_array.size
-        }
-
-        override fun isViewFromObject(view: View, obj: Any): Boolean {
-            return view === obj
-        }
-
-
-        override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-            val view = `object` as View
-            container.removeView(view)
-        }
+    override fun getViewModel(): WelcomeViewModel {
+        return viewModel
     }
 }
