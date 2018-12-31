@@ -1,6 +1,9 @@
 package com.bpdsulteng.mobile.ui.main;
 
+import android.arch.lifecycle.ViewModelProvider;
+
 import com.bpdsulteng.mobile.conn.ApiService;
+import com.bpdsulteng.mobile.ui.base.ViewModelProviderFactory;
 
 import dagger.Module;
 import dagger.Provides;

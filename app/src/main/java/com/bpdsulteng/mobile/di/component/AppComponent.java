@@ -20,12 +20,6 @@ import dagger.android.AndroidInjectionModule;
  * Profesi : Android Developer
  */
 
-/**
- * Created by knalb on 04/10/18.
- * Email : profghozimahdi@gmail.com
- * No Tpln : 0857-4124-4919
- * Profesi : Android Developer
- */
 @Singleton
 @Component(modules = {AndroidInjectionModule.class, ApiModule.class, AppModule.class, ActivityBuilder.class})
 public interface AppComponent {
