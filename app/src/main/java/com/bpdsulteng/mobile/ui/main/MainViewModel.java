@@ -19,14 +19,6 @@ public class MainViewModel extends BaseObservableViewModel<MainNavigator> {
         this.apiService = apiService;
     }
 
-    public void prevClicked() {
-        getNavigator().gotoPrevFragment();
-    }
-
-    public void nextClicked() {
-        getNavigator().gotoNextFragment();
-    }
-
     public void init() {
 
     }

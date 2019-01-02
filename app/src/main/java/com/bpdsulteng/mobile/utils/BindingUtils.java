@@ -7,8 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
 import com.bpdsulteng.mobile.model.WelcomePojo;
-import com.bpdsulteng.mobile.ui.main.fragmentone.AdapterOneFragment;
-import com.bpdsulteng.mobile.ui.main.fragmenttwo.AdapterTwoFragment;
+import com.bpdsulteng.mobile.ui.main.listdata.AdapterListDataFragment;
 import com.bpdsulteng.mobile.ui.welcome.WelcomeViewPagerAdapter;
 import com.bumptech.glide.Glide;
 
@@ -40,19 +39,10 @@ public final class BindingUtils {
 
     @BindingAdapter({"adapterOne"})
     public static void addItemsFragmentOne(RecyclerView recyclerView, List<String> strings) {
-        AdapterOneFragment adapterOneFragment = (AdapterOneFragment) recyclerView.getAdapter();
+        AdapterListDataFragment adapterOneFragment = (AdapterListDataFragment) recyclerView.getAdapter();
         if (adapterOneFragment != null) {
             adapterOneFragment.clearItems();
             adapterOneFragment.addItems(strings);
-        }
-    }
-
-    @BindingAdapter({"adapterTwo"})
-    public static void addItemsFragmentTwo(RecyclerView recyclerView, List<String> strings) {
-        AdapterTwoFragment adapterTwoFragment = (AdapterTwoFragment) recyclerView.getAdapter();
-        if (adapterTwoFragment != null) {
-            adapterTwoFragment.clearItems();
-            adapterTwoFragment.addItems(strings);
         }
     }
 

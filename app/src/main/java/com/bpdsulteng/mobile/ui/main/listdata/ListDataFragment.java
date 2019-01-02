@@ -1,4 +1,4 @@
-package com.bpdsulteng.mobile.ui.main.fragmentone;
+package com.bpdsulteng.mobile.ui.main.listdata;
 
 
 import android.arch.lifecycle.ViewModelProvider;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.android.databinding.library.baseAdapters.BR;
 import com.bpdsulteng.mobile.R;
-import com.bpdsulteng.mobile.databinding.FragmentOneBinding;
+import com.bpdsulteng.mobile.databinding.ListdataFragmentBinding;
 import com.bpdsulteng.mobile.ui.base.BaseFragment;
 import com.bpdsulteng.mobile.utils.RecyclerViewLoadMoreScroll;
 
@@ -26,14 +26,14 @@ import javax.inject.Inject;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OneFragment extends BaseFragment<FragmentOneBinding, OneViewModel> implements OneNavigator, AdapterOneFragment.OnItemClickListener {
+public class ListDataFragment extends BaseFragment<ListdataFragmentBinding, ListDataViewModel> implements ListDataNavigator, AdapterListDataFragment.OnItemClickListener {
 
-    private FragmentOneBinding binding;
-    private OneViewModel viewModel;
+    private ListdataFragmentBinding binding;
+    private ListDataViewModel viewModel;
     @Inject
     public ViewModelProvider.Factory viewModelFactory;
     @Inject
-    public AdapterOneFragment adapterOneFragment;
+    public AdapterListDataFragment adapterOneFragment;
     @Inject
     public LinearLayoutManager linearLayoutManager;
     @Inject
@@ -58,7 +58,7 @@ public class OneFragment extends BaseFragment<FragmentOneBinding, OneViewModel> 
         binding.rcFragmentOne.setHasFixedSize(true);
         binding.rcFragmentOne.setAdapter(adapterOneFragment);
         adapterOneFragment.setOnItemClickListener(this);
-        recyclerViewLoadMoreScroll.setLinearLayoutManager((LinearLayoutManager)binding.rcFragmentOne.getLayoutManager());
+        recyclerViewLoadMoreScroll.setLinearLayoutManager((LinearLayoutManager) binding.rcFragmentOne.getLayoutManager());
         recyclerViewLoadMoreScroll.setOnLoadMoreListener(() -> {
             loadmore();
         });
@@ -82,13 +82,13 @@ public class OneFragment extends BaseFragment<FragmentOneBinding, OneViewModel> 
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_one;
+        return R.layout.listdata_fragment;
     }
 
     @Override
-    public OneViewModel getViewModel() {
+    public ListDataViewModel getViewModel() {
         viewModel = ViewModelProviders.of(this, viewModelFactory)
-                .get(OneViewModel.class);
+                .get(ListDataViewModel.class);
         return viewModel;
     }
 

@@ -1,8 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1976D2</color>
-    <color name="colorPrimaryDark">#1565C0</color>
+    <color name="colorPrimary">#2d5e90</color>
+    <color name="colorPrimaryDark">#2d5e90</color>
+    <color name="colorAccent">#dfb730</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="black20">#19000000</color>
+    <color name="black50">#77000000</color>
+    <color name="divider">#c7c7c7</color>
+    <color name="background">#f3f6f7</color>
+    <color name="background_card">#fafafa</color>
+    <color name="text">#666666</color>
+    <color name="white">#ffffff</color>
+    <color name="white55">#aeffffff</color>
+    <color name="black">#000000</color>
+    <color name="gold">#e2bc41</color>
+    <color name="color1">#2d5e90</color>
+    <color name="color2">#f3c528</color>
+    <color name="color3">#1493c5</color>
+
+    <!--black-->
+    <color name="black05">#05000000</color>
+    <color name="black80">#50000000</color>
+    <color name="black90">#5A000000</color>
+    <color name="black128">#80000000</color>
+
+    <!--white-->
+    <color name="white05">#05ffffff</color>
+    <color name="white20">#14ffffff</color>
+    <color name="white50">#32ffffff</color>
+    <color name="white80">#50ffffff</color>
+    <color name="white90">#5Affffff</color>
+    <color name="white128">#80ffffff</color>
+    <color name="white190">#beffffff</color>
+    <color name="white245">#f5ffffff</color>
+
     <color name="colorPrimaryLight">#1E88E5</color>
-    <color name="colorAccent">#FF4081</color>
     <color name="colorAccentDark">#F50057</color>
     <color name="colorAccentLight">#FF80AB</color>
 

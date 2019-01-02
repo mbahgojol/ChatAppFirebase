@@ -12,11 +12,13 @@ import com.bpdsulteng.mobile.R
 import com.bpdsulteng.mobile.databinding.ActivityWelcomeBinding
 import com.bpdsulteng.mobile.model.WelcomePojo
 import com.bpdsulteng.mobile.ui.base.BaseActivity
+import com.bpdsulteng.mobile.ui.main.MainActivity
 import com.bpdsulteng.mobile.utils.Tools
 import com.bpdsulteng.mobile.widget.ParallaxPageTransformer
 import com.bpdsulteng.mobile.widget.ParallaxPageTransformer.ParallaxTransformInformation
 import com.bpdsulteng.mobile.widget.ParallaxPageTransformer.ParallaxTransformInformation.PARALLAX_EFFECT_DEFAULT
 import kotlinx.android.synthetic.main.activity_welcome.*
+import org.jetbrains.anko.startActivity
 import javax.inject.Inject
 
 
@@ -73,8 +75,8 @@ class WelcomeActivity : BaseActivity<ActivityWelcomeBinding, WelcomeViewModel>()
         })
 
         val pageTransformer = ParallaxPageTransformer()
-                .addViewToParallax(ParallaxTransformInformation(R.id.image, PARALLAX_EFFECT_DEFAULT,2f , true))
-                .addViewToParallax(ParallaxTransformInformation(R.id.description, PARALLAX_EFFECT_DEFAULT,2f , false))
+                .addViewToParallax(ParallaxTransformInformation(R.id.image, PARALLAX_EFFECT_DEFAULT, 2f, true))
+                .addViewToParallax(ParallaxTransformInformation(R.id.description, PARALLAX_EFFECT_DEFAULT, 2f, false))
                 .addViewToParallax(ParallaxTransformInformation(R.id.title, -3f, 3f, false))
         view_pager.setPageTransformer(true, pageTransformer)
 
@@ -88,6 +90,7 @@ class WelcomeActivity : BaseActivity<ActivityWelcomeBinding, WelcomeViewModel>()
             // move to next screen
             view_pager.currentItem = current
         } else {
+            startActivity<MainActivity>()
             finish()
         }
     }

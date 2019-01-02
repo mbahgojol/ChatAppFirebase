@@ -1,10 +1,9 @@
-package com.bpdsulteng.mobile.ui.main.fragmentone;
+package com.bpdsulteng.mobile.ui.main.listdata;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.bpdsulteng.mobile.conn.ApiManager;
-import com.bpdsulteng.mobile.conn.ApiService;
 import com.bpdsulteng.mobile.ui.base.ViewModelProviderFactory;
 
 import dagger.Module;
@@ -17,24 +16,24 @@ import dagger.Provides;
  * Profesi : Android Developer
  */
 @Module
-public class OneFragmentModule {
+public class ListDataFragmentModule {
     @Provides
-    public OneViewModel oneViewModel(ApiManager apiManager) {
-        return new OneViewModel(apiManager);
+    public ListDataViewModel oneViewModel(ApiManager apiManager) {
+        return new ListDataViewModel(apiManager);
     }
 
     @Provides
-    public ViewModelProvider.Factory provideOneViewModel(OneViewModel oneViewModel) {
+    public ViewModelProvider.Factory provideOneViewModel(ListDataViewModel oneViewModel) {
         return new ViewModelProviderFactory(oneViewModel);
     }
 
     @Provides
-    public LinearLayoutManager provideLinearLayoutManager(OneFragment fragment) {
+    public LinearLayoutManager provideLinearLayoutManager(ListDataFragment fragment) {
         return new LinearLayoutManager(fragment.getActivity());
     }
 
     @Provides
-    public AdapterOneFragment provideAdapterOneFragment() {
-        return new AdapterOneFragment();
+    public AdapterListDataFragment provideAdapterOneFragment() {
+        return new AdapterListDataFragment();
     }
 }

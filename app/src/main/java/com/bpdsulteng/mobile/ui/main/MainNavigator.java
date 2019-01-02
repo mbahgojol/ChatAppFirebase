@@ -7,7 +7,5 @@ package com.bpdsulteng.mobile.ui.main;
  * Profesi : Android Developer
  */
 public interface MainNavigator {
-    void gotoNextFragment();
 
-    void gotoPrevFragment();
 }

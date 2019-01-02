@@ -1,4 +1,4 @@
-package com.bpdsulteng.mobile.ui.main.fragmentone;
+package com.bpdsulteng.mobile.ui.main.listdata;
 
 import android.databinding.ObservableArrayList;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * No Tpln : 0857-4124-4919
  * Profesi : Android Developer
  */
-public class OneViewModel extends BaseObservableViewModel<OneNavigator> {
+public class ListDataViewModel extends BaseObservableViewModel<ListDataNavigator> {
     private ApiManager apiManager;
     private ObservableArrayList<String> listOne = new ObservableArrayList();
 
@@ -21,7 +21,7 @@ public class OneViewModel extends BaseObservableViewModel<OneNavigator> {
 
     }
 
-    public OneViewModel(ApiManager apiManager) {
+    public ListDataViewModel(ApiManager apiManager) {
         this.apiManager = apiManager;
     }
 

@@ -4,8 +4,8 @@
     <data>
 
         <variable
-            name="vmtwo"
-            type="com.bpdsulteng.mobile.ui.main.fragmenttwo.TwoViewModel" />
+            name="vmone"
+            type="com.bpdsulteng.mobile.ui.main.listdata.ListDataViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,18 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.main.fragmentone.OneFragment">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fragment Two" />
+        tools:context=".ui.main.listdata.ListDataFragment">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rcFragmentTwo"
+            android:id="@+id/rcFragmentOne"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:adapterTwo="@{vmtwo.listTwo}" />
+            app:adapterOne="@{vmone.listOne}" />
 
     </LinearLayout>
 </layout>

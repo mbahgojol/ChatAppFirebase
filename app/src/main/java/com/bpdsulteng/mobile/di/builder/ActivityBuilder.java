@@ -2,8 +2,7 @@ package com.bpdsulteng.mobile.di.builder;
 
 import com.bpdsulteng.mobile.ui.main.MainActivity;
 import com.bpdsulteng.mobile.ui.main.MainActivityModule;
-import com.bpdsulteng.mobile.ui.main.fragmentone.OneFragmentProvider;
-import com.bpdsulteng.mobile.ui.main.fragmenttwo.TwoFragmentProvider;
+import com.bpdsulteng.mobile.ui.main.listdata.ListDataFragmentProvider;
 import com.bpdsulteng.mobile.ui.welcome.WelcomeActivity;
 import com.bpdsulteng.mobile.ui.welcome.WelcomeActivityModule;
 
@@ -19,8 +18,7 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityBuilder {
     @ContributesAndroidInjector(modules = {MainActivityModule.class,
-            OneFragmentProvider.class,
-            TwoFragmentProvider.class})
+            ListDataFragmentProvider.class})
     public abstract MainActivity bindMainActivity();
 
     @ContributesAndroidInjector(modules = {WelcomeActivityModule.class})

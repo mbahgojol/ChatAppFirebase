@@ -7,8 +7,7 @@ import com.android.databinding.library.baseAdapters.BR;
 import com.bpdsulteng.mobile.R;
 import com.bpdsulteng.mobile.databinding.ActivityMainBinding;
 import com.bpdsulteng.mobile.ui.base.BaseActivity;
-import com.bpdsulteng.mobile.ui.main.fragmentone.OneFragment;
-import com.bpdsulteng.mobile.ui.main.fragmenttwo.TwoFragment;
+import com.bpdsulteng.mobile.ui.main.listdata.ListDataFragment;
 import com.bpdsulteng.mobile.utils.ClassHelper;
 
 import javax.inject.Inject;
@@ -36,7 +35,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     private void setupView() {
         ClassHelper.addFragment(this,
                 R.id.container,
-                new OneFragment(),
+                new ListDataFragment(),
                 "ONEFRAGMENT");
     }
 
@@ -53,20 +52,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     @Override
     public MainViewModel getViewModel() {
         return viewModel;
-    }
-
-    @Override
-    public void gotoNextFragment() {
-        ClassHelper.replaceFragment(this,
-                R.id.container,
-                new TwoFragment(),
-                "TWOFRAGMENT",
-                "ONEFRAGMENT");
-    }
-
-    @Override
-    public void gotoPrevFragment() {
-        ClassHelper.backFragment(this);
     }
 
     @Override

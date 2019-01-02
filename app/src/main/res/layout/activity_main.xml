@@ -15,32 +15,6 @@
         android:orientation="vertical"
         tools:context=".ui.main.MainActivity">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{() -> vmmain.prevClicked()}"
-                android:text="Prev" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@{vmmain.keterangan}" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{() -> vmmain.nextClicked()}"
-                android:text="next" />
-        </LinearLayout>
-
-
         <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"

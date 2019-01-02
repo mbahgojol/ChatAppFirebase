@@ -1,4 +1,4 @@
-package com.bpdsulteng.mobile.ui.main.fragmentone;
+package com.bpdsulteng.mobile.ui.main.listdata;
 
 import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
@@ -11,10 +11,10 @@ import com.bpdsulteng.mobile.BR;
  * No Tpln : 0857-4124-4919
  * Profesi : Android Developer
  */
-public class OneItemViewModel extends BaseObservable {
+public class ListDataItemViewModel extends BaseObservable {
     public ObservableField<String> title = new ObservableField<String>();
 
-    public OneItemViewModel(String title) {
+    public ListDataItemViewModel(String title) {
         this.title.set(title);
         notifyPropertyChanged(BR.vmitemone);
     }

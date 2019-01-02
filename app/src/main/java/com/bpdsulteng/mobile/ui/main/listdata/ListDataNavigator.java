@@ -1,4 +1,4 @@
-package com.bpdsulteng.mobile.ui.main.fragmenttwo;
+package com.bpdsulteng.mobile.ui.main.listdata;
 
 /**
  * Created by knalb on 19/10/18.
@@ -6,6 +6,6 @@ package com.bpdsulteng.mobile.ui.main.fragmenttwo;
  * No Tpln : 0857-4124-4919
  * Profesi : Android Developer
  */
-public interface TwoNavigator {
+public interface ListDataNavigator {
 
 }

@@ -1,4 +1,4 @@
-package com.bpdsulteng.mobile.ui.main.fragmenttwo;
+package com.bpdsulteng.mobile.ui.main.listdata;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bpdsulteng.mobile.R;
-import com.bpdsulteng.mobile.databinding.ItemTwoBinding;
+import com.bpdsulteng.mobile.databinding.ItemOneBinding;
 import com.bpdsulteng.mobile.databinding.ProgressbarBinding;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import java.util.List;
  */
 
 
-public class AdapterTwoFragment extends RecyclerView.Adapter {
+public class AdapterListDataFragment extends RecyclerView.Adapter {
     private final int VIEW_ITEM = 1;
     private final int VIEW_PROG = 0;
     private List<String> item = new ArrayList<>();
@@ -76,7 +76,7 @@ public class AdapterTwoFragment extends RecyclerView.Adapter {
         RecyclerView.ViewHolder vh;
         LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (viewType == VIEW_ITEM) {
-            ItemTwoBinding binding = DataBindingUtil.inflate(inflater, R.layout.item_two, parent, false);
+            ItemOneBinding binding = DataBindingUtil.inflate(inflater, R.layout.item_one, parent, false);
             vh = new ItemViewHolder(binding);
         } else {
             ProgressbarBinding binding = DataBindingUtil.inflate(inflater, R.layout.progressbar, parent, false);
@@ -101,16 +101,16 @@ public class AdapterTwoFragment extends RecyclerView.Adapter {
     }
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
-        ItemTwoBinding binding;
+        ItemOneBinding binding;
 
-        public ItemViewHolder(ItemTwoBinding v) {
+        public ItemViewHolder(ItemOneBinding v) {
             super(v.getRoot());
             binding = v;
         }
 
         public void bind(String items) {
-            TwoItemViewModel viewModel = new TwoItemViewModel(items);
-            binding.setVmitemtwo(viewModel);
+            ListDataItemViewModel viewModel = new ListDataItemViewModel(items);
+            binding.setVmitemone(viewModel);
         }
     }
 
