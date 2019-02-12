@@ -1,7 +1,6 @@
 package com.bpdsulteng.androidtvsliderimage.data.realm
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import io.realm.RealmObject
 import javax.annotation.Generated
 
 @Generated("com.robohorse.robopojogenerator")

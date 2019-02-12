@@ -99,7 +99,7 @@
     <dimen name="summary_block_height">111dp</dimen>
     <dimen name="analyze_block_height">89dp</dimen>
     <dimen name="button_height">40dp</dimen>
-    
+
     <dimen name="menu_septum">1dp</dimen>
     <dimen name="category_drop_down_size">35dp</dimen>
 

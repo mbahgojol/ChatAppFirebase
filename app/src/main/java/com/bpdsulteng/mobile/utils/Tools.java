@@ -34,12 +34,12 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bpdsulteng.mobile.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.bpdsulteng.mobile.R;
 
 import java.lang.reflect.Type;
 import java.text.NumberFormat;

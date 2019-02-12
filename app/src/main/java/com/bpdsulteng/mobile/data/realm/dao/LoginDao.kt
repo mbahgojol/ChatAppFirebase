@@ -3,8 +3,6 @@ package com.bpdsulteng.jbk.realm.dao
 import android.util.Log
 import com.bpdsulteng.androidtvsliderimage.data.realm.UserLoginObject
 import com.bpdsulteng.mobile.data.realm.RealmManager
-import io.realm.RealmResults
-import io.realm.Sort
 
 /**
  * Created by knalb on 02/10/18.

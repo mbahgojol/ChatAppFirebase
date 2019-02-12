@@ -17,9 +17,9 @@
             android:name="com.module.wakafmaslahah.network.glidemodule.UnsafeOkHttpGlideModule"
             android:value="GlideModule" />
 
-        <activity android:name=".ui.main.MainActivity">
-        </activity>
-        <activity android:name=".ui.welcome.WelcomeActivity"
+        <activity android:name=".ui.main.MainActivity"></activity>
+        <activity
+            android:name=".ui.welcome.WelcomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/FullTheme"
             android:windowSoftInputMode="stateHidden|adjustPan">

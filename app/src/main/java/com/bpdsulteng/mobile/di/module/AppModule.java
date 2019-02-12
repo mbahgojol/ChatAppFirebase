@@ -3,10 +3,10 @@ package com.bpdsulteng.mobile.di.module;
 import android.app.Application;
 import android.content.Context;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.bpdsulteng.mobile.R;
 import com.bpdsulteng.mobile.utils.RecyclerViewLoadMoreScroll;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import javax.inject.Singleton;
 

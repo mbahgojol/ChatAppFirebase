@@ -25,9 +25,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.provider.Settings;
 import android.util.Patterns;
 
+import com.bpdsulteng.mobile.R;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.bpdsulteng.mobile.R;
 
 import org.jetbrains.annotations.NotNull;
 

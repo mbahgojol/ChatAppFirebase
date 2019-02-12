@@ -3,7 +3,6 @@ package com.bpdsulteng.mobile.ui.welcome
 import android.annotation.SuppressLint
 import android.graphics.PorterDuff
 import android.os.Bundle
-import android.support.v4.view.ViewPager
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -17,8 +16,6 @@ import com.bpdsulteng.mobile.utils.Tools
 import com.bpdsulteng.mobile.widget.ParallaxPageTransformer
 import com.bpdsulteng.mobile.widget.ParallaxPageTransformer.ParallaxTransformInformation
 import com.bpdsulteng.mobile.widget.ParallaxPageTransformer.ParallaxTransformInformation.PARALLAX_EFFECT_DEFAULT
-import kotlinx.android.synthetic.main.activity_welcome.*
-import org.jetbrains.anko.startActivity
 import javax.inject.Inject
 
 
