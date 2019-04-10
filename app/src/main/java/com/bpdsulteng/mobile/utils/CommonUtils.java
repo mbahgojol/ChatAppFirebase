@@ -26,8 +26,11 @@ import android.provider.Settings;
 import android.util.Patterns;
 
 import com.bpdsulteng.mobile.R;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -104,5 +107,17 @@ public final class CommonUtils {
             e.printStackTrace();
         }
         return null;
+    }
+
+     public static <T> List<T> mtJaksonToList(String response) throws IOException {
+        TypeReference typeReference = new TypeReference<List<T>>() {
+        };
+        return new ObjectMapper().readValue(response, typeReference);
+    }
+
+    public static <T> List<T> mtGsonToList(String response) throws IOException {
+        Type collectionType = new TypeToken<List<T>>() {
+        }.getType();
+        return new Gson().fromJson(response, collectionType);
     }
 }
