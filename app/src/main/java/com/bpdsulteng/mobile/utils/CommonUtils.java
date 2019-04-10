@@ -31,6 +31,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.fasterxml.jackson.databind.type.CollectionType;
+import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -113,10 +115,11 @@ public final class CommonUtils {
         return null;
     }
 
-     public static <T> List<T> mtJaksonToList(String response) throws IOException {
-        TypeReference typeReference = new TypeReference<List<T>>() {
-        };
-        return new ObjectMapper().readValue(response, typeReference);
+     public static <T> List<T> mtJaksonToList(String response, Class<T> tClass) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        CollectionType listType = mapper.getTypeFactory().constructCollectionType(ArrayList.class, tClass);
+        List<T> ts = mapper.readValue(response, listType);
+        return ts;
     }
 
     public static <T> List<T> mtGsonToList(String response) throws IOException {
