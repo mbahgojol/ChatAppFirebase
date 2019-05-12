@@ -29,7 +29,7 @@ public class ApiModule {
         interceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
         return new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
-                .readTimeout(300, TimeUnit.SECONDS)
+                .readTimeout(25, TimeUnit.SECONDS)
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(300, TimeUnit.SECONDS)
                 .build();
