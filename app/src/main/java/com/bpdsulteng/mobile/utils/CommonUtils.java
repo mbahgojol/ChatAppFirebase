@@ -26,8 +26,13 @@ import android.provider.Settings;
 import android.util.Patterns;
 
 import com.bpdsulteng.mobile.R;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.fasterxml.jackson.databind.type.CollectionType;
+import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -37,6 +42,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import java.io.ByteArrayOutputStream;
+import android.util.Base64;
 
 /**
  * Created by amitshekhar on 07/07/17.
@@ -104,5 +113,30 @@ public final class CommonUtils {
             e.printStackTrace();
         }
         return null;
+    }
+
+     public static <T> List<T> mtJaksonToList(String response, Class<T> tClass) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        CollectionType listType = mapper.getTypeFactory().constructCollectionType(ArrayList.class, tClass);
+        List<T> ts = mapper.readValue(response, listType);
+        return ts;
+    }
+
+    public static <T> List<T> mtGsonToList(String response) throws IOException {
+        Type collectionType = new TypeToken<List<T>>() {
+        }.getType();
+        return new Gson().fromJson(response, collectionType);
+    }
+
+    public static Bitmap decodeBase64(String input) {
+        byte[] decodedBytes = Base64.decode(input, 0);
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+    }
+
+
+    public static String encodeToBase64(Bitmap image, Bitmap.CompressFormat compressFormat, int quality) {
+        ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
+        image.compress(compressFormat, quality, byteArrayOS);
+        return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.DEFAULT);
     }
 }
