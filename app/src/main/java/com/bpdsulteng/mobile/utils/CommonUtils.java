@@ -32,6 +32,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.fasterxml.jackson.databind.type.CollectionType;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
@@ -40,6 +42,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 import android.graphics.Bitmap;
