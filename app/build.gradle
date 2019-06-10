@@ -79,12 +79,12 @@ dependencies {
 
     //NETWORK
     //Dagger 2
-    implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
-    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
-    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger2Version" // kotlin
-    kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"  // kotlin
-    //annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version" // for java
-    //annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
+    implementation "com.google.dagger:dagger:$dagger2Version"
+    implementation "com.google.dagger:dagger-android-support:$dagger2Version"
+    kapt "com.google.dagger:dagger-compiler:$dagger2Version" // kotlin
+    kapt "com.google.dagger:dagger-android-processor:$dagger2Version"  // kotlin
+    //annotationProcessor "com.google.dagger:dagger-compiler:$dagger2Version" // for java
+    //annotationProcessor "com.google.dagger:dagger-android-processor:$dagger2Version"
     // for java
     implementation 'org.glassfish:javax.annotation:10.0-b28'
     //Retrofit2
@@ -98,22 +98,21 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     implementation 'io.realm:android-adapters:2.1.0'
     // mvvm
-    implementation "android.arch.lifecycle:extensions:$rootProject.lifecycle"
-    //kapt "android.arch.lifecycle:compiler:$rootProject.lifecycle" // kotlin
-    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifecycle" // for java
+    implementation "android.arch.lifecycle:extensions:$lifecycle"
+    //kapt "android.arch.lifecycle:compiler:$lifecycle" // kotlin
+    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle" // for java
     // font
     implementation "uk.co.chrisjenx:calligraphy:2.2.0"
 
     // dependencies for local unit tests
-    testImplementation "junit:junit:$rootProject.ext.junitVersion"
-    testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
-    testAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testAnnotationProcessor "com.google.dagger:dagger-compiler:$dagger2Version"
     // UI Testing
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
-    androidTestImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
-    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
-
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$espressoVersion"
+    androidTestImplementation "org.mockito:mockito-core:$mockitoVersion"
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$dagger2Version"
     //jakson
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.5'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.8.5'
