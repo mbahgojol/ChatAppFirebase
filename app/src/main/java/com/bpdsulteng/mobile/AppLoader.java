@@ -3,6 +3,7 @@ package com.bpdsulteng.mobile;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.bpdsulteng.mobile.data.realm.RealmManager;
 import com.bpdsulteng.mobile.di.component.DaggerAppComponent;
@@ -29,6 +30,12 @@ public class AppLoader extends Application implements HasActivityInjector {
     public CalligraphyConfig mCalligraphyConfig;
 
     public static Context appContext;
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
 
     @Override
     public void onCreate() {
