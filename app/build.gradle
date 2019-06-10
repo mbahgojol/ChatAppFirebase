@@ -120,6 +120,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.8.5'
     // circle image view
     implementation 'com.mikhaellopez:circularimageview:3.0.2'
+    // kotlin
     implementation 'org.jetbrains:annotations-java5:15.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 

@@ -2,6 +2,7 @@ package com.bpdsulteng.mobile.utils
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Build
 import android.support.annotation.RequiresApi
@@ -9,6 +10,8 @@ import android.support.v4.graphics.drawable.DrawableCompat
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import org.jetbrains.anko.ctx
+import java.net.URISyntaxException
 
 /**
  * Created by knalb on 12/05/19.
@@ -50,22 +53,5 @@ class CompatUtils {
                 v.backgroundTintList = colorStateList
             }
         }
-    }
-}
-
-fun tryYukk(a: (Any) -> Unit, b: (Any) -> Unit) {
-    try {
-        a.invoke(a)
-    } catch (e: Exception) {
-        b.invoke(e)
-        e.printStackTrace()
-    }
-}
-
-fun tryYukk(a: (Any) -> Unit) {
-    try {
-        a.invoke(a)
-    } catch (e: Exception) {
-        e.printStackTrace()
     }
 }
