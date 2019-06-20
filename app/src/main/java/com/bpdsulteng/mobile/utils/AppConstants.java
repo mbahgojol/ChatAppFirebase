@@ -16,6 +16,8 @@
 
 package com.bpdsulteng.mobile.utils;
 
+import org.jetbrains.annotations.Nullable;
+
 /**
  * Created by amitshekhar on 07/07/17.
  */
@@ -39,6 +41,8 @@ public final class AppConstants {
     public static final String STATUS_CODE_SUCCESS = "success";
 
     public static final String TIMESTAMP_FORMAT = "yyyyMMdd_HHmmss";
+    @Nullable
+    public static final String TAG = "AppsKu";
 
     private AppConstants() {
         // This utility class is not publicly instantiable

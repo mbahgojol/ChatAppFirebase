@@ -17,7 +17,7 @@ public class SharedPref {
     public static final String cookies = "cookies";
 
     private static SharedPreferences getPref() {
-        Context context = AppLoader.appContext;
+        Context context = AppLoader.Companion.getAppContext();
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 

@@ -1,5 +1,6 @@
 package com.bpdsulteng.mobile.ui.welcome
 
+import android.support.v4.view.ViewPager
 import com.bpdsulteng.mobile.ui.base.BaseObservableViewModel
 
 /**
