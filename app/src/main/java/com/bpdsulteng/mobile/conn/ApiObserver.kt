@@ -14,7 +14,8 @@ import java.io.IOException
  * No Tpln : 0857-4124-4919
  * Profesi : Android Developer Expert
  */
-class ApiObserver(val callBack: (String) -> Unit, var callBackError: (String, ResponseError) -> Unit) :
+class ApiObserver(val callBack: (String) -> Unit,
+                  var callBackError: (String, ResponseError) -> Unit = fun(_, _) {}) :
         Observer<String> {
 
 
