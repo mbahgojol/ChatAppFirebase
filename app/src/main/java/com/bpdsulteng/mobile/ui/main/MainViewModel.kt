@@ -48,7 +48,6 @@ class MainViewModel
             override fun onCancelled(databaseError: DatabaseError) {}
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 var user = dataSnapshot.getValue(User::class.java)
-                Log.d("SnapshotUser", dataSnapshot.value.toString())
                 username.set(user?.username)
                 notifyPropertyChanged(BR.username)
                 if (user?.imageURL == "default") {
@@ -68,12 +67,10 @@ class MainViewModel
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 var adapter = ViewPagerAdapter(fm)
                 var unread = 0
+                Log.d("SnapshotUser", dataSnapshot.value.toString())
                 for (snapshot in dataSnapshot.children) {
-                    Log.d("SnapshotChat", snapshot.toString())
                     if (snapshot.key.toString().contains("-")) {
                         val chat = snapshot.getValue(Chat::class.java)
-                        Log.d("receiver", chat?.receiver)
-                        Log.d("firebaseUser", firebaseUser?.uid)
                         if (chat?.receiver.equals(firebaseUser?.uid) && !chat?.isIsseen!!) {
                             unread++
                         }

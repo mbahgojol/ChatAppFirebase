@@ -4,7 +4,9 @@ import android.databinding.BindingAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
+import com.bpdsulteng.mobile.model.Chat
 import com.bpdsulteng.mobile.model.User
+import com.bpdsulteng.mobile.ui.chatroom.ChatRoomAdapter
 import com.bpdsulteng.mobile.ui.main.chat.UserAdapter
 
 /**
@@ -43,6 +45,28 @@ class BindingUtils {
                 if (adapterUser != null) {
                     adapterUser.clearItems()
                     adapterUser.addItems(items)
+                }
+            }
+        }
+
+        @BindingAdapter("adapterUsers")
+        @JvmStatic
+        fun RecyclerView.setUserList(items: List<User>?) {
+            if (adapter is UserAdapter) {
+                var adapterUser = this.adapter as UserAdapter?
+                adapterUser?.clearItems()
+                items?.let { adapterUser?.addItems(it) }
+            }
+        }
+
+        @BindingAdapter("adapter")
+        @JvmStatic
+        fun RecyclerView.setChatRoomList(items: List<Chat>) {
+            if (adapter is ChatRoomAdapter) {
+                var adapterChatRoom = this.adapter as ChatRoomAdapter
+                if (adapterChatRoom != null) {
+                    adapterChatRoom.clearItems()
+                    adapterChatRoom.addItems(items)
                 }
             }
         }

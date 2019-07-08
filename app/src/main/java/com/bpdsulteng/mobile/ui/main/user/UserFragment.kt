@@ -2,29 +2,53 @@ package com.bpdsulteng.mobile.ui.main.user
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.LayoutInflater
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import android.view.ViewGroup
-
+import com.android.databinding.library.baseAdapters.BR
 import com.bpdsulteng.mobile.R
+import com.bpdsulteng.mobile.databinding.FragmentUserBinding
+import com.bpdsulteng.mobile.model.User
+import com.bpdsulteng.mobile.ui.base.BaseFragment
+import com.bpdsulteng.mobile.ui.chatroom.ChatRoomActivity
+import com.bpdsulteng.mobile.ui.main.chat.UserAdapter
+import kotlinx.android.synthetic.main.fragment_user.*
+import org.jetbrains.anko.support.v4.startActivity
+import javax.inject.Inject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class UserFragment : BaseFragment<FragmentUserBinding, UserViewModel>(), UserNavigator {
+    private lateinit var binding: FragmentUserBinding
+    @Inject
+    internal lateinit var viewModel: UserViewModel
+    @Inject
+    internal lateinit var userAdapter: UserAdapter
 
-/**
- * A simple [Fragment] subclass.
- *
- */
-class UserFragment : Fragment() {
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user, container, false)
+    override fun getBindingVariable() = BR.vmuserfragment
+    override fun getLayoutId() = R.layout.fragment_user
+    override fun getViewModel() = viewModel
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.navigator = this
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding = viewDataBinding
 
+        etSearch.addTextChangedListener(viewModel.getSearchUsers())
+
+        rvUserList.apply {
+            layoutManager = LinearLayoutManager(baseActivity)
+            setHasFixedSize(true)
+            adapter = userAdapter
+            userAdapter.setListener {
+                startActivity<ChatRoomActivity>("userid" to it.id)
+            }
+        }
+
+        viewModel.readUsers()
+    }
+
+    override fun onSuccesFetchUsers(items: List<User>) {
+        userAdapter.clearItems()
+        userAdapter.addItems(items)
+    }
 }

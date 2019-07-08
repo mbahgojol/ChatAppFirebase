@@ -1,10 +1,13 @@
 package com.bpdsulteng.mobile.di.builder
 
+import com.bpdsulteng.mobile.ui.chatroom.ChatRoomActivity
+import com.bpdsulteng.mobile.ui.chatroom.ChatRoomActivityModule
 import com.bpdsulteng.mobile.ui.login.LoginActivity
 import com.bpdsulteng.mobile.ui.login.LoginActivityModule
 import com.bpdsulteng.mobile.ui.main.MainActivity
 import com.bpdsulteng.mobile.ui.main.MainActivityModule
 import com.bpdsulteng.mobile.ui.main.chat.ChatFragmentProvider
+import com.bpdsulteng.mobile.ui.main.user.UserFragmentProvider
 import com.bpdsulteng.mobile.ui.register.RegisterActivity
 import com.bpdsulteng.mobile.ui.register.RegisterActivityModule
 import dagger.Module
@@ -24,7 +27,11 @@ abstract class ActivityBuilder {
     @ContributesAndroidInjector(modules = [RegisterActivityModule::class])
     abstract fun bindRegisterActivity(): RegisterActivity
 
+    @ContributesAndroidInjector(modules = [ChatRoomActivityModule::class])
+    abstract fun bindChatRoomActivity(): ChatRoomActivity
+
     @ContributesAndroidInjector(modules = [MainActivityModule::class,
-        ChatFragmentProvider::class])
+        ChatFragmentProvider::class,
+        UserFragmentProvider::class])
     abstract fun bindMainActivity(): MainActivity
 }

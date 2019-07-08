@@ -2,7 +2,6 @@ package com.bpdsulteng.mobile.ui.main.chat
 
 import android.databinding.Bindable
 import android.databinding.ObservableArrayList
-import android.util.Log
 import com.android.databinding.library.baseAdapters.BR
 import com.bpdsulteng.mobile.model.Chatlist
 import com.bpdsulteng.mobile.model.User
@@ -44,11 +43,12 @@ class ChatViewModel : BaseObservableViewModel<ChatNavigator>() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 mUsers.clear()
                 for (snapshot in dataSnapshot.children) {
-                    Log.d("DataSnapshot",snapshot.toString())
-                    val user = snapshot.getValue(User::class.java)
-                    for (chatlist in usersList) {
-                        if (user?.id.equals(chatlist.id)) {
-                            mUsers.add(user)
+                    if (snapshot.getValue(User::class.java) != null) {
+                        val user = snapshot.getValue(User::class.java)
+                        for (chatlist in usersList) {
+                            if (user?.id.equals(chatlist.id)) {
+                                mUsers.add(user)
+                            }
                         }
                     }
                 }
