@@ -32,6 +32,8 @@ class UserFragment : BaseFragment<FragmentUserBinding, UserViewModel>(), UserNav
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = viewDataBinding
+        binding.lifecycleOwner = this
+        binding.vmuserfragment = viewModel
 
         etSearch.addTextChangedListener(viewModel.getSearchUsers())
 
@@ -45,10 +47,5 @@ class UserFragment : BaseFragment<FragmentUserBinding, UserViewModel>(), UserNav
         }
 
         viewModel.readUsers()
-    }
-
-    override fun onSuccesFetchUsers(items: List<User>) {
-        userAdapter.clearItems()
-        userAdapter.addItems(items)
     }
 }

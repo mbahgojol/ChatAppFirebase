@@ -49,7 +49,6 @@ class UserViewModel : BaseObservableViewModel<UserNavigator>() {
                         }
                     }
                 }
-                navigator.onSuccesFetchUsers(mUsers)
                 notifyPropertyChanged(BR.usersList)
             }
         })
@@ -71,7 +70,6 @@ class UserViewModel : BaseObservableViewModel<UserNavigator>() {
                         mUsers.add(user)
                     }
                 }
-                navigator.onSuccesFetchUsers(mUsers)
                 notifyPropertyChanged(BR.usersList)
             }
         })

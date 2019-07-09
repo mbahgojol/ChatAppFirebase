@@ -51,11 +51,11 @@ class BindingUtils {
 
         @BindingAdapter("adapterUsers")
         @JvmStatic
-        fun RecyclerView.setUserList(items: List<User>?) {
+        fun RecyclerView.setUserList(items: List<User>) {
             if (adapter is UserAdapter) {
                 var adapterUser = this.adapter as UserAdapter?
                 adapterUser?.clearItems()
-                items?.let { adapterUser?.addItems(it) }
+                adapterUser?.addItems(items)
             }
         }
 
