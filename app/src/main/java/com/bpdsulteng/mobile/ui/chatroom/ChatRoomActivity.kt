@@ -43,14 +43,15 @@ class ChatRoomActivity : BaseActivity<ActivityChatRoomBinding, ChatRoomViewModel
             linearLayoutManager.stackFromEnd = true
             layoutManager = linearLayoutManager
             adapter = chatRoomAdapter
-            recycler_view.viewTreeObserver.addOnGlobalLayoutListener { scrollToEnd() }
+            recycler_view.viewTreeObserver.addOnGlobalLayoutListener(this@ChatRoomActivity::scrollToEnd)
         }
 
         viewModel.configurationChatRoom()
     }
 
-    private fun scrollToEnd() =
-            (chatRoomAdapter.itemCount - 1).takeIf { it > 0 }?.let(recycler_view::smoothScrollToPosition)
+    fun scrollToEnd() {
+        (chatRoomAdapter.itemCount - 1).takeIf { it > 0 }?.let(recycler_view::smoothScrollToPosition)
+    }
 
     override fun showMsg(msg: String) {
         toast(msg)
