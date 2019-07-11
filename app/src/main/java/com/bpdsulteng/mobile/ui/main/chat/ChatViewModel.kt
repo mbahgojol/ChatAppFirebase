@@ -2,15 +2,18 @@ package com.bpdsulteng.mobile.ui.main.chat
 
 import android.databinding.Bindable
 import android.databinding.ObservableArrayList
+import android.util.Log
 import com.android.databinding.library.baseAdapters.BR
 import com.bpdsulteng.mobile.model.Chatlist
 import com.bpdsulteng.mobile.model.User
 import com.bpdsulteng.mobile.ui.base.BaseObservableViewModel
+import com.bpdsulteng.mobile.utils.CommonUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import org.json.JSONObject
 
 class ChatViewModel : BaseObservableViewModel<ChatNavigator>() {
     val fuser by lazy { FirebaseAuth.getInstance().currentUser }
@@ -28,6 +31,7 @@ class ChatViewModel : BaseObservableViewModel<ChatNavigator>() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 usersList.clear()
                 for (snapshot in dataSnapshot.children) {
+                    Log.d("DataSnapshot", snapshot.toString())
                     val chatlist = snapshot.getValue(Chatlist::class.java)
                     usersList.add(chatlist)
                 }
@@ -43,16 +47,21 @@ class ChatViewModel : BaseObservableViewModel<ChatNavigator>() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 mUsers.clear()
                 for (snapshot in dataSnapshot.children) {
-                    if (snapshot.getValue(User::class.java) != null) {
-                        val user = snapshot.getValue(User::class.java)
+                    if (snapshot.value is Map<*, *>) {
+                        val values = snapshot.value as Map<String, Any>?
+                        val response = JSONObject(values)
+                        Log.d("DataSnapshot", snapshot.toString())
+                        Log.d("JSONObject", response.toString())
+
+                        val user = CommonUtils.mto(response.toString(), User::class.java)
                         for (chatlist in usersList) {
                             if (user?.id.equals(chatlist.id)) {
                                 mUsers.add(user)
+                                notifyPropertyChanged(BR.users)
                             }
                         }
                     }
                 }
-                notifyPropertyChanged(BR.users)
             }
         })
     }

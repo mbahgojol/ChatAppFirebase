@@ -8,13 +8,16 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import com.android.databinding.library.baseAdapters.BR
-import com.bpdsulteng.mobile.R
 import com.bpdsulteng.mobile.model.Chat
 import com.bpdsulteng.mobile.model.User
 import com.bpdsulteng.mobile.ui.base.BaseObservableViewModel
+import com.bpdsulteng.mobile.utils.CommonUtils.mto
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import org.json.JSONObject
 import java.util.*
+
 
 class ChatRoomViewModel : BaseObservableViewModel<ChatRoomNavigator>() {
     private val fuser by lazy { FirebaseAuth.getInstance().currentUser }
@@ -72,7 +75,7 @@ class ChatRoomViewModel : BaseObservableViewModel<ChatRoomNavigator>() {
                 val user = dataSnapshot.getValue(User::class.java)
                 user?.username?.let { setUsename(it) }
                 if (user?.imageURL.equals("default")) {
-                    resId.set(R.mipmap.ic_launcher)
+                    resId.set(com.bpdsulteng.mobile.R.mipmap.ic_launcher)
                     notifyPropertyChanged(BR.resId)
                 } else {
                     imgUrl.set(user?.imageURL)
@@ -98,19 +101,24 @@ class ChatRoomViewModel : BaseObservableViewModel<ChatRoomNavigator>() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 mchat.clear()
                 for (snapshot in dataSnapshot.children) {
-                    Log.d("DataSnapshot", snapshot.toString())
-                    if (snapshot.key.toString().matches("-(.*)".toRegex())) {
-                        val chat = snapshot.getValue(Chat::class.java)
+                    if (snapshot.value is Map<*, *>) {
+                        val values = snapshot.value as Map<String, Any>?
+                        val jsonObject = JSONObject(values)
+                        val response = jsonObject.toString()
+                        Log.d("DataSnapshot", snapshot.toString())
+                        Log.d("JSONObject", jsonObject.toString())
+
+                        val chat = mto(response, Chat::class.java)
                         if (chat?.receiver.equals(myid)
                                 && chat?.sender.equals(userId)
                                 || chat?.receiver.equals(userId)
                                 && chat?.sender.equals(myid)) {
                             chat?.imageurl = imageurl
                             mchat.add(chat)
+                            notifyPropertyChanged(BR.chat)
                         }
                     }
                 }
-                notifyPropertyChanged(BR.chat)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -173,8 +181,14 @@ class ChatRoomViewModel : BaseObservableViewModel<ChatRoomNavigator>() {
         seenListener = reference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (snapshot in dataSnapshot.children) {
-                    if (snapshot.key.toString().contains("-")) {
-                        val chat = snapshot.getValue(Chat::class.java)
+                    if (snapshot.value is Map<*, *>) {
+                        val values = snapshot.value as Map<String, Any>?
+                        val jsonObject = JSONObject(values)
+                        val response = jsonObject.toString()
+                        Log.d("DataSnapshot", snapshot.toString())
+                        Log.d("JSONObject", jsonObject.toString())
+
+                        val chat = mto(response, Chat::class.java)
                         if (chat?.receiver.equals(fuser?.uid) && chat?.sender.equals(userId)) {
                             val hashMap = HashMap<String, Any>()
                             hashMap["isseen"] = true

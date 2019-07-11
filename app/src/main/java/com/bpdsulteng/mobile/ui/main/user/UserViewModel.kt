@@ -5,14 +5,17 @@ import android.databinding.ObservableArrayList
 import android.databinding.ObservableField
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import com.android.databinding.library.baseAdapters.BR
 import com.bpdsulteng.mobile.model.User
 import com.bpdsulteng.mobile.ui.base.BaseObservableViewModel
+import com.bpdsulteng.mobile.utils.CommonUtils.mto
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import org.json.JSONObject
 
 class UserViewModel : BaseObservableViewModel<UserNavigator>() {
     private val mUsers = ObservableArrayList<User>()
@@ -40,16 +43,21 @@ class UserViewModel : BaseObservableViewModel<UserNavigator>() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 mUsers.clear()
                 for (snapshot in dataSnapshot.children) {
-                    if (snapshot.getValue(User::class.java) != null) {
-                        val user = snapshot.getValue(User::class.java)
+                    if (snapshot.value is Map<*, *>) {
+                        val values = snapshot.value as Map<String, Any>?
+                        val response = JSONObject(values)
+                        Log.d("DataSnapshot", snapshot.toString())
+                        Log.d("JSONObject", response.toString())
+
+                        val user = mto(response.toString(), User::class.java)
                         if (user?.id != null) {
                             if (!user.id.equals(firebaseUser?.uid)) {
                                 mUsers.add(user)
+                                notifyPropertyChanged(BR.usersList)
                             }
                         }
                     }
                 }
-                notifyPropertyChanged(BR.usersList)
             }
         })
     }
@@ -64,13 +72,20 @@ class UserViewModel : BaseObservableViewModel<UserNavigator>() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 mUsers.clear()
                 for (snapshot in dataSnapshot.children) {
-                    val user = snapshot.getValue(User::class.java)!!
-                    assert(fuser != null)
-                    if (!user.id.equals(fuser?.uid)) {
-                        mUsers.add(user)
+                    if (snapshot.value is Map<*, *>) {
+                        val values = snapshot.value as Map<String, Any>?
+                        val response = JSONObject(values)
+                        Log.d("DataSnapshot", snapshot.toString())
+                        Log.d("JSONObject", response.toString())
+
+                        val user = mto(response.toString(), User::class.java)
+                        assert(fuser != null)
+                        if (!user.id.equals(fuser?.uid)) {
+                            mUsers.add(user)
+                            notifyPropertyChanged(BR.usersList)
+                        }
                     }
                 }
-                notifyPropertyChanged(BR.usersList)
             }
         })
     }
